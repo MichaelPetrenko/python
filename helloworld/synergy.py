@@ -77,3 +77,42 @@ a = 22 / 0 # ZeroDivisionError: division by zero
 # Вещественные числа
 a = float(input())
 print(a) # 4.0
+
+# Логические операторы
+a = 5
+b = 7
+
+# a < b - логическая операция
+print(a <= b) # True
+print (a == b)
+print (a != b)
+
+a = int(input("Введите первое число : "))
+b = int(input("Введите второе число : "))
+
+# Вложенный if
+if a < b:
+    print("less")
+else:
+    if a == b:
+        print("equal")
+    else:
+        print("grater")
+
+# Вариант с elif
+if a < b:
+    print("less")
+elif a == b:
+    print("equal")
+else:
+    print("grater")
+
+# И, или - or, and, if not 
+cash = int(input("cash : "))
+cost = int(input("cost : "))
+cassa = int(input("cassa : "))
+
+if (cash >= cost) and ((cash - cost) <= cassa):
+    print("Денег хватило")
+else:
+    print("Денег не хватило")
