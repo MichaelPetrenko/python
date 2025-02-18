@@ -116,3 +116,55 @@ if (cash >= cost) and ((cash - cost) <= cassa):
     print("Денег хватило")
 else:
     print("Денег не хватило")
+
+# Циклы while и for
+a = int(input("Input number : "))
+cnt = 0
+while a >= 0:
+    a -= 2
+    print("a = ", a)
+    cnt += 1
+print(cnt)
+
+# Cola
+clients = int(input("Clients : "))
+cola = int(input("Cola : "))
+cnt = 0
+
+while (clients > 0) and (cola >= 0):
+    cans = int(input("Cans to buy : "))
+    clients -= 1
+    if cola >= cans:
+        cnt += 1
+        cola -= cans
+
+print("Cnt = ", cnt)
+
+# Numbers from 1 to 10
+for i in range(1, 11): # 3 параметр - на сколько увеличивать
+    print(i)
+
+# Numbers from a to b with step 2
+a = int(input("First number : "))
+b = int(input("Second number : "))
+
+for i in range(a, b, 2): # 3 параметр - на сколько увеличивать
+    print(i)
+
+# range(10) -> range(0, 10, 1)
+
+# else in while
+a = 1
+while a < 5:
+    a += 1
+    print(a)
+else: # only one time
+    print("only one time")
+
+# Увольнение людей в компании
+n = int(input("Введите количество людей в компании : "))
+
+for i in range(n):
+    salary = int(input("Зарплата : "))
+    if (salary % 2 == 0):
+        print(i + 1, "уволен")
