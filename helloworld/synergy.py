@@ -168,3 +168,51 @@ for i in range(n):
     salary = int(input("Зарплата : "))
     if (salary % 2 == 0):
         print(i + 1, "уволен")
+
+# Урок 7. Строки
+s1 = 'abcde'
+s2 = 'abcdef'
+print(s2[0])  # Вывести первый символ
+print(s2[-1]) # Вывести последний символ - отрицательная индексация
+# Поменять таким образом букву в слове не получится
+
+s3 = s1 + s2
+print(s3)
+print(len(s3)) # длина строки
+
+s4 = 'abcdefghijkl'
+# Срез строки
+print(s4[0:4:1]) # От первого параметра вкл до второго невкл, шаг
+print(s4[5::-1]) # Срез в обратном порядке до начала строки
+print(s4[5::1]) # Срез в прямом порядке до конца строки
+
+tmp = [4, 3, 2, 9, 7]
+print(tmp[::2]) # Вывести все элементы массива с шагом 2
+print(tmp)
+
+tmp = "3 + 8 + 9 + 10"
+t = tmp.split(" + ")
+print(t)
+print(" + ".join(t)) # Склеили обратно
+
+name = "Dima"
+print("Hello,", name)
+print(f"Hello, {name}") # Форматирование строки
+test = f"Hello, {name}"
+print(test)
+
+s1 = "sdfkjbhsdf"
+print(s1.upper())
+print(s1.lower())
+
+print(ord('a')) # Номер символа в таблице ASCII
+print(chr(97)) # Обратная функция
+
+# Шифр Цезаря
+t = 'abzr'
+for c in t:
+    code = ord(c) + 3
+    if code > 122:
+        print(chr(97 + code - 122), end='')
+    else:
+        print(chr(ord(c) + 3), end='')
