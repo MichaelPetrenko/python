@@ -12,5 +12,4 @@ for i in numbers:
         print(f"{i} : YES")
     else:
         print(f"{i} : NO")
-
-    uniq_numbers.add(i)
+        uniq_numbers.add(i)
