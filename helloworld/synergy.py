@@ -363,3 +363,48 @@ tmp = {1, 2, 3, 9, 0}
 for el in tmp:
     print(el) # не в изначальном порядке
 
+# Урок 10. Словари (Map в Java, Dictionary) - набор ключей и значений. Ключ должен быть уникальным
+bank = {'anton': 10, 'dima': 20, 'petya': 4}
+print(bank['anton'])
+print(bank.get('anton')) # Так тоже работает
+
+bank['anton'] = 159
+print(bank)
+
+# Банк
+bank = dict()
+n = int(input("Please enter number : "))
+
+for i in range(n):
+    req = input("Enter 'create' or 'add' : ")
+    if req == "create":
+        key = input("Enter key : ")
+        bank[key] = 0
+    elif req == "add":
+        key = input("Enter key : ")
+        amount = int(input("Enter amount : "))
+        if key in bank.keys():
+            bank[key] += amount
+        else:
+            print("Sorry, no such key")
+    else:
+        print("Sorry, bad request")
+
+print(bank)
+
+# Методы словарей
+tmp = {'k1': 1, 'k2': 10, 'qwerty': 5}
+print(tmp.keys()) # Набор ключей
+print(tmp.values()) # Набор значений
+print(tmp.items()) # Map.Entry из Java - пары ключ-значение
+
+# Итерация по словарям
+for k in tmp.keys():
+    print(k)
+
+tmp.pop('k1') # Удаление значения из словаря
+print(tmp)
+
+# Ключом словаря может быть любой неизменяемый тип (примитив).
+# В Java ключом может быть любой объект
+
