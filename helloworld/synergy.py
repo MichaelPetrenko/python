@@ -316,3 +316,50 @@ a = [5]
 b = a
 a[0] = 6
 print(b) # [6]
+
+# Урок 9. Множества (set)
+
+# Множества (Set) - структура данных, которая хранит уникальные объекты
+tmp = set()
+tmp2 = {2, 3, 3, 4} # Создание множества
+tmp2.add(7)
+tmp2.remove(7) # Вызовет ошибку при отсутствии элемента
+tmp2.discard(7) # Не вызовет ошибку при отсутствии элемента
+print(tmp2)
+
+# Промокоды
+n = int(input("Введите количество промокодов : "))
+used = set()
+for i in range(n):
+    promo = input("Введите промокод : ")
+    if promo in used:
+        print("Sorry, already used")
+    else:
+        used.add(promo)
+print("Использовано промокодов : ", len(used))
+used.clear() # Очистить множество
+
+# Компании, люди с именами - уволить сотрудников с похожими именами
+company1 = int(input("Input number of peoples in company 1 : "))
+company_names1 = [] # Пустой список
+for i in range(company1):
+    name = input("Input name : ")
+    company_names1.append(name)
+
+company2 = int(input("Input number of peoples in company 2 : "))
+company_names2 = []
+for i in range(company2):
+    name = input("Input name : ")
+    company_names2.append(name)
+
+uniq1 = set(company_names1)
+uniq2 = set(company_names2)
+print("Unique names : ", uniq1.union(uniq2)) # Объединение множеств
+print("Пересечение множеств : ", uniq1.intersection(uniq2)) # Пересечение множеств
+
+# set - изменяемый тип, неизменяемый тип - frozenset - нельзя модифицирующие операции, добавлять элементы
+
+tmp = {1, 2, 3, 9, 0}
+for el in tmp:
+    print(el) # не в изначальном порядке
+
