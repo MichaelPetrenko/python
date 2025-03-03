@@ -581,3 +581,50 @@ print_list(house)
 # Трёхмерный список
 t3 = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
 print(t3[0][0][0])
+
+# Урок 14. Рекурсия
+
+def test(a, b = 4, c = 9): # Дефолтное значение - для последних элементов
+    return a + b + c
+
+print(test(3, 4, 9))
+print(test(3, 4))
+print(test(3))
+
+# Так как питон интерпретируемый, а не компилируемый, читает строки по очереди - функция должна быть выше её вызова
+
+# Рекурсивная функция
+def tmp(x):
+    if x < 0:
+        return
+    print(x)
+    tmp(x - 1)
+
+n = 10
+tmp(n) # 10 9 8 7 6 5 4 3 2 1 0
+
+def tmp(x):
+    if x < 0:
+        return
+    tmp(x - 1)
+    print(x)
+
+n = 10
+tmp(n) # 0 1 2 3 4 5 6 7 8 9 10 - раскручивается стэк вызовов функций
+
+# Найти n-ное число Фибоначчи - 0 1 1 2 3 5 8 13 ...
+def fib(num):
+    if num <= 0:
+        return 0
+    elif num == 1:
+        return 1
+    res = fib(num - 1) + fib(num - 2)
+    return res
+
+print("fib 5 = ", fib(5))
+print("fib 6 = ", fib(6))
+print("fib 7 = ", fib(7))
+print("fib 8 = ", fib(8))
+
+# Глубина рекурсии - import sys - sys.setrecursionlimit(2000) - так как по дефолту около 1000
+
