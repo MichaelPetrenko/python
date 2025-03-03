@@ -669,3 +669,55 @@ h2.say_hi()
 
 h2.goodbye()
 Human.goodbye()
+
+# Тема 5. Работа с классами, объектами и файлами
+# Урок 16. Классы и объекты
+
+class Car(object):
+    brand = "Mazda"
+    color = "black"
+    max_speed = 100
+    __password = 1234 # Приватное поле __
+
+    def __init__(self, brand, max_speed):
+        self.brand = brand
+        self.max_speed = max_speed
+
+    def upgrade(self):
+        self.max_speed += 25
+        self.__password = 345
+        self.__update_password()
+
+    def get_password(self):
+        return self.__password
+
+    def __update_password(self):
+        self.__password = 234
+
+class Truck(Car):
+    max_weight = 10
+
+    def __init__(self, brand, max_speed, max_weight):
+        self.brand = brand
+        super().__init__(max_speed, max_weight)
+
+    def add(self):
+        self.max_weight += 10
+
+nissan = Car("Nissan", 190)
+nissan.upgrade()
+print(nissan.brand, nissan.max_speed)
+
+gazel = Truck("Gazel", 60, 90)
+gazel.upgrade()
+gazel.add()
+print(gazel.max_speed, gazel.max_weight)
+
+mazda = Car("Mazda", 200)
+mazda.upgrade()
+print(mazda.get_password())
+
+mazda.__password = 987 # не получится
+print(mazda.get_password())
+mazda._Car__password = 987 # Получилось? Как рефлексия в джаве
+print(mazda.get_password())
