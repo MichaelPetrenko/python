@@ -461,3 +461,123 @@ for i in range(n):
         march8()
     else:
         print("Неправильная команда")
+
+# Тема 4. Функции
+# Урок 12. Сортировки
+
+# Сортировка пузырьком - пузырьковая сортировка
+a = [4, 9, 0, 18, 17, 23, 4, 1, 0]
+n = len(a)
+
+for i in range(n):
+    for j in range (n - 1 - i):
+        if a[j] > a[j + 1]:
+            a[j], a[j + 1] = a[j + 1], a[j] # Заменить элементы местами
+
+print(a)
+
+b = [4, 9, 0, 18, 17, 23, 4, 1, 0]
+b.sort() # Обычная быстрая сортировка
+print()
+
+def cmp(x):
+    return x % 10
+
+b.sort(key = cmp) # Сортировка по остатку от деления на 10
+print(b)
+
+# SEO
+n = 5
+sph = [12, 30, 97, 5, 6]
+hours = [10, 120, 4, 8, 9]
+
+res = []
+for i in range(n):
+    r = sph[i] * hours[i]
+    res.append(r)
+
+res.sort()
+print(res)
+
+# сортировка по произведению первой и второй цифры числа
+tmp = [12, 34, 23, 53, 65, 34, 61]
+
+def cmp(x):
+    return (x // 10) * (x % 10)
+
+tmp.sort(key=cmp)
+print(tmp)
+
+# Максимум из значений
+a = 5
+b = 8
+c = 1
+d = -19
+
+print(max(a, b, c, d))
+print(min(a, b, c, d))
+
+tmp = [1, 2, 3443, 6, -10]
+print(max(tmp))
+
+# Кортежи (tuple) - неизменяемые списки
+a = (2, 4, 9, 7)
+b = tuple()
+print(a.count(2)) # Количество чисел 2
+
+poets = [('Ptushkin', 1203, 1299), ('Cheburashkin', 999, 1201), ("Petrogradskiy", 1931, 1956)]
+# poets[0][1] = 1204 - так не получится
+poets[0] = ("Ptushkin", 1204, 1299) # Поменять весь кортеж
+print(poets)
+
+# Урок 13. Двумерные списки
+
+tmp = [[1, 2, 3], [4, 5], [9, 8, 7]]
+print(tmp[1][1])
+
+tmp[1][0] = 9
+print(tmp[1][0])
+
+tmp[1] = [4, 9, 0, 3]
+print(tmp[1])
+
+tmp.append([6, 9, 2])
+print(tmp)
+
+for i in tmp:
+    print(*i) # Убрать скобочки и запятые
+
+n = 2
+tmp = []
+for i in range(n):
+    a = list(map(int, input("Введите элементы : ").split()))
+    tmp.append(a)
+print(tmp) # [[1, 2], [5, 3, 1]]
+
+tmp = [[1 for i in range(3)] for i in range(4)]
+print(tmp) # [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]]
+
+# Дом x этажей y квартир, нумерация разная на четных и нечетных
+def print_list(t):
+    for i in t:
+        print(*i)
+x = int(input("x = "))
+y = int(input("y = "))
+house = [[0 for i in range(y)] for i in range(x)]
+cnt = 1
+
+for i in range(-1, -x -1, -1):
+    if i%2 == 1:
+        for j in range(y):
+            house[i][j] = cnt
+            cnt += 1
+    else:
+        for j in range(-1, -y -1, -1):
+            house[i][j] = cnt
+            cnt += 1
+
+print_list(house)
+
+# Трёхмерный список
+t3 = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+print(t3[0][0][0])
