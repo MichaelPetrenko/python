@@ -408,3 +408,56 @@ print(tmp)
 # Ключом словаря может быть любой неизменяемый тип (примитив).
 # В Java ключом может быть любой объект
 
+# Урок 11. Функции
+
+def chet(a):
+    return a % 2 == 0
+
+print(chet(23))
+print(chet(24))
+
+def tmp(name):
+    print(f"Hello, {name}!")
+
+tmp("Michael")
+
+def vis(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    return False
+
+print(vis(2024))
+print(vis(2025))
+
+def nechet(n):
+    return n % 2 != 0
+
+def res(l):
+    for el in l:
+        if nechet(el):
+            print(el)
+
+tmp = [1, 2, 234, 5, 457, 5, 68, 69]
+res(tmp)
+
+def new_year():
+    print("Happy new year!")
+
+def birthday():
+    name = input("Input name : ")
+    print(f"Happy Birthday, {name}!")
+
+def march8():
+    print("Happy 8th of March!")
+
+n = int(input("Введите количество команд : "))
+for i in range(n):
+    cm = input("Введите команду : ")
+    if cm == "new year":
+        new_year()
+    elif cm == "birthday":
+        birthday()
+    elif cm == "8 march":
+        march8()
+    else:
+        print("Неправильная команда")
