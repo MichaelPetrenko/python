@@ -628,3 +628,44 @@ print("fib 8 = ", fib(8))
 
 # Глубина рекурсии - import sys - sys.setrecursionlimit(2000) - так как по дефолту около 1000
 
+# Урок 15. ООП
+
+# Класс - шаблон для создания объектов одного и того же типа.
+# У него есть свойства класса - атрибуты объектов, которые с помощью этого класса создаются, и методы.
+# Методы нужны для описания поведения объектов класса
+
+class Human(object):
+    name = "Ivan" # Дефолтные значения
+    height = 175
+    age = 25
+
+    def __init__(self, n, h, a):
+        self.name = n
+        self.height = h
+        self.age = a
+
+    def say_hi(self):
+        print(f"Привет! Меня зовут {self.name}, мне {self.age} лет, мой рост - {self.height}")
+
+    def get_older(self):
+        self.age += 5
+
+    @staticmethod
+    def goodbye():
+        print("Goodbye!")
+
+# default_human = Human()
+# print(default_human.height)
+# default_human.name = "Anton"
+# print(default_human.name)
+
+h1 = Human("Anton", 120, 12)
+h2 = Human("Dima", 190, 23)
+print(h2.name)
+h1.say_hi()
+h1.get_older()
+h1.say_hi()
+h2.say_hi()
+
+h2.goodbye()
+Human.goodbye()
