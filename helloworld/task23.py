@@ -17,8 +17,8 @@ matrix_1 = [[random.randint(-150, 150) for i in range(matrix_width)] for i in ra
 matrix_2 = [[random.randint(-150, 150) for i in range(matrix_width)] for i in range(matrix_height)]
 matrix_res = [[0 for i in range(matrix_width)] for i in range(matrix_height)]
 
-for i in range(matrix_width):
-    for j in range(matrix_height):
+for i in range(matrix_height):
+    for j in range(matrix_width):
         matrix_res[i][j] = matrix_1[i][j] + matrix_2[i][j]
 
 print_list(matrix_1, "Первая исходная матрица")
