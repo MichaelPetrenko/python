@@ -4,6 +4,8 @@
 # 3 - госпиталь
 # 4 - апгрейд-шоп
 
+CELL_TYPES = "⬜🌲🌊🏥🏦"
+
 class Map:
     width = 0
     height = 0
@@ -25,19 +27,11 @@ class Map:
             return True
 
     def print_map(self):
-        print("◼️" * (self.width + 2))
+        print("⬛" * (self.width + 2))
         for row in self.cells:
-            print("◼️", end='')
+            print("⬛", end='')
             for cell in row:
-                if cell == 0:
-                    print('◻️', end='')
-                elif cell == 1:
-                    print('🌲', end='')
-                elif cell == 2:
-                    print('🌊', end='')
-                elif cell == 3:
-                    print('🏥', end='')
-                elif cell == 4:
-                    print('🏦', end='')
-            print("◼️")
-        print("◼️" * (self.width + 2))
+                if (cell >= 0) and (cell < len(CELL_TYPES)):
+                    print(CELL_TYPES[cell], end='')
+            print("⬛")
+        print("⬛" * (self.width + 2))
