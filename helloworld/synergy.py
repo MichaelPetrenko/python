@@ -721,3 +721,40 @@ mazda.__password = 987 # не получится
 print(mazda.get_password())
 mazda._Car__password = 987 # Получилось? Как рефлексия в джаве
 print(mazda.get_password())
+
+# Урок 17. О-нотация, исключения
+
+try:
+    print(45 // 0)
+except ZeroDivisionError:
+    print("Нельзя делить на 0")
+
+t = [1, 2, 5]
+try:
+    print(t[10])
+except ZeroDivisionError:
+    print("ZeroDivisionError")
+except IndexError:
+    print("IndexError")
+
+try:
+    print(45 // 0)
+except Exception:
+    print("Ошибка")
+else:
+    print("Сюда попадаем, только если нет ошибки")
+finally:
+    print("Finish")
+
+# Базовые операции - сложение, вычитание, присваивание - О(1)
+# Константы отбрасываем
+
+n = int(input())
+m = int(input())
+a = 1
+
+for i in range(n):
+    for j in range(n):
+        a += 1 # O (n ^ 2 + m)
+
+# Питон выполняет в секунду 10^6 базовых операций.
