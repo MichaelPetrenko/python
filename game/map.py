@@ -24,7 +24,7 @@ class Map:
         self.width = width
         self.cells = [[0 for i in range(self.width)] for j in range(self.height)]
 
-        self.generate_forest(3, 10)
+        self.generate_forest(5, 10)
         self.generate_river(10)
         self.generate_river(10)
         self.generate_river(10)
@@ -46,9 +46,9 @@ class Map:
             for ci in range(self.width):
                 cell = self.cells[ri][ci]
                 if clouds.cells[ri][ci] == 1:
-                    print('⛅', end='')
+                    print('⚪', end='')
                 elif clouds.cells[ri][ci] == 2:
-                    print('⚡️', end='')
+                    print('🌀', end='')
                 elif helico.x == ri and helico.y == ci:
                     print('🚁', end='')
                 elif (cell >= 0) and (cell < len(CELL_TYPES)):
