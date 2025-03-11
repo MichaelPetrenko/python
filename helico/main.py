@@ -4,6 +4,7 @@ from pynput import keyboard
 from map import Map
 import time
 import os
+import json
 from helicopter import Helicopter as Helico
 from clouds import Clouds
 
@@ -18,22 +19,41 @@ MAP_HEIGHT = 10
 map = Map(MAP_WIDTH, MAP_HEIGHT)
 clouds = Clouds(MAP_WIDTH, MAP_HEIGHT)
 helico = Helico(MAP_WIDTH, MAP_HEIGHT)
+tick = 1
 
 MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
+# f - save, g - load
 def process_key(key, injected):
-    global helico
+    global helico, tick, clouds, map
     c = key.char.lower()
     if c in MOVES.keys():
         dx = MOVES[c][0]
         dy = MOVES[c][1]
         helico.move(dx, dy)
 
+    elif c == 'f':
+        data = {
+            "helicopter": helico.export_data(),
+            "clouds": clouds.export_data(),
+            "map": map.export_data(),
+            "tick": tick
+        }
+        with open("level.json", "w") as lvl:
+            json.dump(data, lvl)
+
+    elif c == 'g':
+        with open("level.json", "r") as lvl:
+            data = json.load(lvl)
+            tick = data["tick"] or 1
+            helico.import_data(data["helicopter"])
+            map.import_data(data["map"])
+            clouds.import_data(data["clouds"])
+
 listener = keyboard.Listener(
     on_press=None,
     on_release=process_key)
 listener.start()
 
-tick = 1
 while True:
     os.system("cls")
     map.process_helicopter(helico, clouds)
