@@ -52,10 +52,3 @@ class Map:
                     print(CELL_TYPES[cell], end='')
             print("⬛")
         print("⬛" * (self.width + 2))
-
-map = Map(20, 10)
-map.generate_forest(3, 10)
-map.generate_river(10)
-map.generate_river(10)
-map.generate_river(10)
-map.print_map()
