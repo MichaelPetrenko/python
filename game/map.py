@@ -8,6 +8,8 @@
 from utils import randcell, randbool, randcell2
 
 CELL_TYPES = "🟩🌲🌊🏥🏦🔥"
+TREE_BONUS = 100
+UPGRADE_COST = 500
 
 class Map:
 
@@ -20,6 +22,12 @@ class Map:
         self.height = height
         self.width = width
         self.cells = [[0 for i in range(self.width)] for j in range(self.height)]
+
+        self.generate_forest(3, 10)
+        self.generate_river(10)
+        self.generate_river(10)
+        self.generate_river(10)
+        self.generate_upgrade_shop()
 
 
     def check_bounds(self, x, y):
@@ -70,6 +78,12 @@ class Map:
             self.cells[cx][cy] = 1
 
 
+    def generate_upgrade_shop(self):
+        c = randcell(self.width, self.height)
+        cx, cy = c[0], c[1]
+        self.cells[cx][cy] = 4
+
+
     def add_fire(self):
         c = randcell(self.width, self.height)
         cx, cy = c[0], c[1]
@@ -86,3 +100,16 @@ class Map:
 
         for i in range(5):
             self.add_fire()
+
+
+    def process_helicopter(self, helico):
+        c = self.cells[helico.x][helico.y]
+        if c == 2:
+            helico.tank = helico.mxtank
+        elif c == 5 and helico.tank > 0:
+            helico.score += TREE_BONUS
+            helico.tank -= 1
+            self.cells[helico.x][helico.y] = 1
+        elif c == 4 and helico.score >= UPGRADE_COST:
+            helico.score -= UPGRADE_COST
+            helico.mxtank += 1

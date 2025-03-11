@@ -1,8 +1,6 @@
 from utils import randcell
 
 class Helicopter:
-    x = 0
-    y = 0
 
     def __init__(self, w, h):
         rc = randcell(w, h)
@@ -12,9 +10,17 @@ class Helicopter:
         self.w = w
         self.y = ry
 
+        self.tank = 0
+        self.mxtank = 1
+        self.score = 0
+
 
     def move(self, dx, dy):
         nx = dx + self.x
         ny = dy + self.y
         if nx >= 0 and ny >= 0 and nx < self.h and ny < self.w:
             self.x, self.y = nx, ny
+
+    def print_stats(self):
+        print("🪣 ", self.tank, "/", self.mxtank, sep='', end=' | ')
+        print("🏆 ", self.score)

@@ -7,19 +7,13 @@ import os
 from helicopter import Helicopter as Helico
 
 
-TICK_SLEEP = 0.2
+TICK_SLEEP = 0.1
 TREE_UPDATE = 50
 FIRE_UPDATE = 100
 MAP_WIDTH = 20
 MAP_HEIGHT = 10
 
 map = Map(MAP_WIDTH, MAP_HEIGHT)
-map.generate_forest(3, 10)
-map.generate_river(10)
-map.generate_river(10)
-map.generate_river(10)
-
-
 helico = Helico(MAP_WIDTH, MAP_HEIGHT)
 
 MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
@@ -40,6 +34,8 @@ tick = 1
 while True:
     os.system("cls")
     print("TICK", tick)
+    map.process_helicopter(helico)
+    helico.print_stats()
     map.print_map(helico)
     tick += 1
     time.sleep(TICK_SLEEP)
