@@ -1,11 +1,11 @@
-from utils import randcell, randbool, randcell2
-
 # 0 - поле
 # 1 - дерево
 # 2 - река
 # 3 - госпиталь
 # 4 - апгрейд-шоп
 # 5 - пожар
+
+from utils import randcell, randbool, randcell2
 
 CELL_TYPES = "🟩🌲🌊🏥🏦🔥"
 
@@ -20,6 +20,27 @@ class Map:
         self.height = height
         self.width = width
         self.cells = [[0 for i in range(self.width)] for j in range(self.height)]
+
+
+    def check_bounds(self, x, y):
+        if (x < 0) or (y < 0) or (x >= self.height) or (y >= self.width):
+            return False
+        else:
+            return True
+
+
+    def print_map(self, helico):
+        print("⬛" * (self.width + 2))
+        for ri in range(self.height):
+            print("⬛", end='')
+            for ci in range(self.width):
+                cell = self.cells[ri][ci]
+                if helico.x == ri and helico.y == ci:
+                    print('🚁', end='')
+                elif (cell >= 0) and (cell < len(CELL_TYPES)):
+                    print(CELL_TYPES[cell], end='')
+            print("⬛")
+        print("⬛" * (self.width + 2))
 
 
     def generate_river(self, l):
@@ -65,21 +86,3 @@ class Map:
 
         for i in range(5):
             self.add_fire()
-
-
-    def check_bounds(self, x, y):
-        if (x < 0) or (y < 0) or (x >= self.height) or (y >= self.width):
-            return False
-        else:
-            return True
-
-
-    def print_map(self):
-        print("⬛" * (self.width + 2))
-        for row in self.cells:
-            print("⬛", end='')
-            for cell in row:
-                if (cell >= 0) and (cell < len(CELL_TYPES)):
-                    print(CELL_TYPES[cell], end='')
-            print("⬛")
-        print("⬛" * (self.width + 2))
