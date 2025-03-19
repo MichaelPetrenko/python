@@ -32,10 +32,13 @@ MOVES = {
 def process_key(key, injected):
     global helico, tick, clouds, map
 
-    if hasattr(key, 'name'):
-        c = key.name
-    else:
-        c = key.char.lower()
+    try:
+        if hasattr(key, 'name'):
+            c = key.name
+        else:
+            c = key.char.lower()
+    except Exception:
+        return
 
     if c in MOVES.keys():
         dx = MOVES[c][0]
