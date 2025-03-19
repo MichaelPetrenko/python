@@ -21,11 +21,22 @@ clouds = Clouds(MAP_WIDTH, MAP_HEIGHT)
 helico = Helico(MAP_WIDTH, MAP_HEIGHT)
 tick = 1
 
-MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
+MOVES = {
+    'w': (-1, 0), 'up': (-1, 0),
+    'd': (0, 1), 'right': (0, 1),
+    's': (1, 0), 'down': (1, 0),
+    'a': (0, -1), 'left': (0, -1)
+    }
+
 # f - save, g - load
 def process_key(key, injected):
     global helico, tick, clouds, map
-    c = key.char.lower()
+
+    if hasattr(key, 'name'):
+        c = key.name
+    else:
+        c = key.char.lower()
+
     if c in MOVES.keys():
         dx = MOVES[c][0]
         dy = MOVES[c][1]
