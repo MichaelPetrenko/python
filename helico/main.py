@@ -22,10 +22,10 @@ helico = Helico(MAP_WIDTH, MAP_HEIGHT)
 tick = 1
 
 MOVES = {
-    'w': (-1, 0), 'up': (-1, 0),
-    'd': (0, 1), 'right': (0, 1),
-    's': (1, 0), 'down': (1, 0),
-    'a': (0, -1), 'left': (0, -1)
+    'w': (-1, 0), 'ц': (-1, 0), 'up': (-1, 0),
+    'd': (0, 1), 'в': (0, 1), 'right': (0, 1),
+    's': (1, 0), 'ы': (1, 0), 'down': (1, 0),
+    'a': (0, -1), 'ф': (0, -1), 'left': (0, -1)
     }
 
 # f - save, g - load
@@ -45,7 +45,7 @@ def process_key(key, injected):
         dy = MOVES[c][1]
         helico.move(dx, dy)
 
-    elif c == 'f':
+    elif c == 'f' or c == 'а':
         data = {
             "helicopter": helico.export_data(),
             "clouds": clouds.export_data(),
@@ -55,7 +55,7 @@ def process_key(key, injected):
         with open("level.json", "w") as lvl:
             json.dump(data, lvl)
 
-    elif c == 'g':
+    elif c == 'g' or c == 'п':
         with open("level.json", "r") as lvl:
             data = json.load(lvl)
             tick = data["tick"] or 1
